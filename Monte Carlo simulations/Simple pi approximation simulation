@@ -1,0 +1,93 @@
+import turtle as t
+from random import *
+from math import *
+
+def drawArea():
+    t.up()
+    t.goto(-180,180)
+    t.down()
+    for i in range(4):
+        t.forward(360)
+        t.right(90)
+    t.up()
+
+def drawSquare():
+    t.up()
+    t.goto(-65,25)
+    t.down()
+    for i in range(4):
+        t.forward(50)
+        t.right(90)
+    t.up()
+
+def drawCircle():
+    t.up()
+    t.goto(100,-50)
+    t.down()
+    t.circle(50)
+    t.up()
+
+def inSquare(coordinate):
+    squareCentre = [-65,0]
+    squareRadius = 25
+    if (abs(squareCentre[0] - coordinate[0]) <= squareRadius) and (abs(squareCentre[1] - coordinate[1]) <= squareRadius):
+        return True
+    else:
+        return False
+
+def inCircle(coordinate):
+    circleCentre = [100,0]
+    circleRadius = 50
+    if sqrt(((abs(circleCentre[0]-coordinate[0]))**2) + ((abs(circleCentre[1]-coordinate[1]))**2)) <= circleRadius:
+        return True
+    else:
+        return False
+
+def generateRandomCoordinate():
+    int1 = randint(-180,180)
+    int2 = randint(-180,180)
+    return [int1,int2]
+
+def placeDot(coordinate):
+    t.up()
+    t.goto(coordinate)
+    t.down()
+    t.color("red")
+    t.dot(5)
+    t.color("black")
+    t.up()
+
+def drawAll():
+    drawArea()
+    drawSquare()
+    drawCircle()
+
+def main():
+
+    t.speed(0)
+
+    numTrials = 100000000
+    squareHits = 0
+    circleHits = 0
+
+    #drawAll()
+    for i in range(numTrials):
+        randomCoordinate = generateRandomCoordinate()
+        #placeDot(randomCoordinate)
+        if inSquare(randomCoordinate):
+            squareHits += 1
+            #print("square hit")
+        elif inCircle(randomCoordinate):
+            circleHits += 1
+            #print("circle hit")
+    
+    print("")
+    print("")
+    print("")
+    print(round(circleHits/squareHits,4))
+        
+main()
+    
+t.Screen().exitonclick()
+
+
