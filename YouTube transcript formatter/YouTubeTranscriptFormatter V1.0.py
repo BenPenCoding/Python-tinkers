@@ -103,11 +103,9 @@ def RemoveTimeStamps(text):
 
                     break
             
-            
         else:
 
             characterNum += 1
-
 
     for removeText in removeArray:
 
@@ -132,13 +130,7 @@ def removeDoubleSpaces(text):
     returnText += text[-1]
 
     return returnText
-
-
-
-        
-
-
-
+    
 #Main
 
 file = open("/Users/benpennycook/Library/CloudStorage/OneDrive-DurhamUniversity/Desktop/Git Repos/Python-tinkers/YouTube transcript formatter/TestInput.txt", "r")
