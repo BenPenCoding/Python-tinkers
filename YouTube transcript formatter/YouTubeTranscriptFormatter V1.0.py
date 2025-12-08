@@ -117,7 +117,7 @@ def removeDoubleSpaces(text):
 
     returnText = ""
 
-    for character in range(0,len(text)-2):
+    for character in range(0,len(text)-1):
 
         if text[character] == " " and text[character + 1] == " ":
 
