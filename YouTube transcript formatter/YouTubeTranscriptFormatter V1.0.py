@@ -143,6 +143,8 @@ text = removeDoubleSpaces(text)
 
 writeFile(text)
 
+file.close()
+
             
 
 
