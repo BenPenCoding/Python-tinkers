@@ -1,3 +1,5 @@
+import time
+
 #Functions
 
 def readFile(file):
@@ -25,7 +27,7 @@ def readFile(file):
 
 def writeFile(text):
 
-    file = open("/Users/benpennycook/Library/CloudStorage/OneDrive-DurhamUniversity/Desktop/Git Repos/Python-tinkers/YouTube transcript formatter/TestOutput.txt", "w")
+    file = open("TestOutput.txt", "w")
     file.write(text)
     file.close()
 
@@ -133,7 +135,9 @@ def removeDoubleSpaces(text):
     
 #Main
 
-file = open("/Users/benpennycook/Library/CloudStorage/OneDrive-DurhamUniversity/Desktop/Git Repos/Python-tinkers/YouTube transcript formatter/TestInput.txt", "r")
+start = time.time()
+
+file = open("TestInput.txt", "r")
 
 text = readFile(file)
 
@@ -143,6 +147,7 @@ text = removeDoubleSpaces(text)
 
 writeFile(text)
 
+print(f"Done! Took {time.time() - start} seconds.")
             
 
 
