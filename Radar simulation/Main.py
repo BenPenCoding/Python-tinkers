@@ -29,9 +29,17 @@ class Enemy():
 
         return self.angle
 
+    def setAngle(self, newAngle):
+
+        self.angle = newAngle
+
     def getDistance(self):
 
         return self.distance
+
+    def setDistance(self, newDistance):
+
+        self.distance = newDistance
 
     def getSpeed(self):
 
@@ -123,6 +131,23 @@ def spawnEnemies(numEnemies, minDistance, maxDistance, enemyClass):
 
     return enemies
 
+def moveEnemy(enemy):
+
+    angle = enemy.getAngle()
+    distance = enemy.getDistance()
+    speed = enemy.getSpeed()
+
+    angleChange = random.randint(-speed, speed)
+    angle += angleChange
+
+    displacement = random.randint(-speed, speed)
+
+    if distance + displacement > 50 and distance + displacement < 300:
+
+        distance += displacement
+
+    enemy.setAngle(angle)
+    enemy.setDistance(distance)
 
 def scanForEnemies(enemies, radar):
 
@@ -142,6 +167,7 @@ def scanForEnemies(enemies, radar):
         if enemy.getScansSinceLastScan() >= 90:
 
             enemy.unscan()
+            moveEnemy(enemy)
 
 
 #Main
@@ -152,7 +178,9 @@ tt.speed(0)
 
 centreRadar = Radar(30, 50)
 
-enemies = spawnEnemies(10, 200, 300, Enemy)
+enemies = spawnEnemies(40, 200, 300, Enemy)
+
+RadarGraphics.drawStillFrame(enemies, tt)
 
 while True:
 
@@ -168,7 +196,6 @@ while True:
     #Reset frame
     tt.clear()
 
-turtle.done()
 
 
 
