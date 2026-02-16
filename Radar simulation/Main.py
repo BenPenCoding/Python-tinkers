@@ -195,8 +195,3 @@ while True:
 
     #Reset frame
     tt.clear()
-
-
-
-
-
