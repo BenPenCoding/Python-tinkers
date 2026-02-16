@@ -1,9 +1,25 @@
+#Imports
+
+import time
+
 #Functions
 
 def drawFrame(enemies, radar, turt):
 
     drawEnemies(turt, enemies, 20, True)
     drawRadar(turt, radar)
+
+def drawStillFrame(enemies, turt):
+
+    drawEnemies(turt, enemies, 20, False)
+    start = time.time()
+    while True:
+
+        if time.time() - start >= 5:
+
+            break
+
+
 
 def drawRadar(turt, radar):
 
